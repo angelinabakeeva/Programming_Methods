@@ -1,0 +1,118 @@
+\doxysection{Book Class Reference}
+\hypertarget{classBook}{}\label{classBook}\index{Book@{Book}}
+
+
+Структура данных "{}Книга"{}.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBook_a3927ec5c284f6fbfe03799ac34ba1bd4}{operator$>$}} (const \mbox{\hyperlink{classBook}{Book}} \&other) const
+\begin{DoxyCompactList}\small\item\em Сравнение "{}больше"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBook_a05353de5d8fe99b48c93cadd3b4c932e}{operator$<$}} (const \mbox{\hyperlink{classBook}{Book}} \&other) const
+\begin{DoxyCompactList}\small\item\em Сравнение "{}меньше"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBook_a7931cb9c424fd2e965be7895ad66b7cc}{operator$>$=}} (const \mbox{\hyperlink{classBook}{Book}} \&other) const
+\begin{DoxyCompactList}\small\item\em "{}Больше или равно"{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBook_afd2333eb067b55e79b417f7f5e85ad08}{operator$<$=}} (const \mbox{\hyperlink{classBook}{Book}} \&other) const
+\begin{DoxyCompactList}\small\item\em "{}Меньше или равно"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBook_a73721fcd5f0131d61f0e0ae7257dd824}\label{classBook_a73721fcd5f0131d61f0e0ae7257dd824} 
+string {\bfseries author}
+\begin{DoxyCompactList}\small\item\em Автор книги. \end{DoxyCompactList}\item 
+\Hypertarget{classBook_a694d90d6902d5f9d280db89ba533fad6}\label{classBook_a694d90d6902d5f9d280db89ba533fad6} 
+string {\bfseries title}
+\begin{DoxyCompactList}\small\item\em Название книги. \end{DoxyCompactList}\item 
+\Hypertarget{classBook_a62717bd851774f8bcb7781a1ab55c4c2}\label{classBook_a62717bd851774f8bcb7781a1ab55c4c2} 
+int {\bfseries year}
+\begin{DoxyCompactList}\small\item\em Год издания. \end{DoxyCompactList}\item 
+\Hypertarget{classBook_af4911f9ba822e0c95ab759f30077539b}\label{classBook_af4911f9ba822e0c95ab759f30077539b} 
+int {\bfseries pages}
+\begin{DoxyCompactList}\small\item\em Количество страниц. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Структура данных "{}Книга"{}. 
+
+Хранит автора, название, год издания и количество страниц. Поддерживает сравнение по цепочке\+: автор -\/\texorpdfstring{$>$}{>} название -\/\texorpdfstring{$>$}{>} год. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBook_a05353de5d8fe99b48c93cadd3b4c932e}\label{classBook_a05353de5d8fe99b48c93cadd3b4c932e} 
+\index{Book@{Book}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Book\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBook}{Book}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Сравнение "{}меньше"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Другая книга. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если текущая книга лексикографически меньше. 
+\end{DoxyReturn}
+\Hypertarget{classBook_afd2333eb067b55e79b417f7f5e85ad08}\label{classBook_afd2333eb067b55e79b417f7f5e85ad08} 
+\index{Book@{Book}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool Book\+::operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBook}{Book}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+"{}Меньше или равно"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Другая книга. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если не больше. 
+\end{DoxyReturn}
+\Hypertarget{classBook_a3927ec5c284f6fbfe03799ac34ba1bd4}\label{classBook_a3927ec5c284f6fbfe03799ac34ba1bd4} 
+\index{Book@{Book}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool Book\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBook}{Book}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Сравнение "{}больше"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Другая книга. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если текущая книга лексикографически больше (автор, название, год). 
+\end{DoxyReturn}
+\Hypertarget{classBook_a7931cb9c424fd2e965be7895ad66b7cc}\label{classBook_a7931cb9c424fd2e965be7895ad66b7cc} 
+\index{Book@{Book}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Book@{Book}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool Book\+::operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBook}{Book}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+"{}Больше или равно"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Другая книга. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если не меньше. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+methods/\mbox{\hyperlink{lab1_8cpp}{lab1.\+cpp}}\end{DoxyCompactItemize}

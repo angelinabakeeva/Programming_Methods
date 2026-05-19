@@ -1,0 +1,170 @@
+\doxysection{methods/lab1.cpp File Reference}
+\hypertarget{lab1_8cpp}{}\label{lab1_8cpp}\index{methods/lab1.cpp@{methods/lab1.cpp}}
+
+
+Сравнение алгоритмов сортировки (пузырьковая, пирамидальная, быстрая, std\+::sort) на наборах данных о книгах, загружаемых из CSV-\/файлов.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+Include dependency graph for lab1.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBook}{Book}}
+\begin{DoxyCompactList}\small\item\em Структура данных "{}Книга"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lab1_8cpp_ad3b9439b13a5931513310bfb4c5cb220}{bubble\+Sort}} (vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&arr)
+\begin{DoxyCompactList}\small\item\em Пузырьковая сортировка. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lab1_8cpp_a64d30c7266d9a4ef91ca04399572610c}{down\+Heap}} (vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&a, long k, long n)
+\begin{DoxyCompactList}\small\item\em Восстанавливает свойство кучи в нисходящем направлении (пирамидальная сортировка). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lab1_8cpp_a2fcbf179e39f4f68622abc37d86461e0}{heap\+Sort}} (vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&a)
+\begin{DoxyCompactList}\small\item\em Пирамидальная сортировка (heap sort) вектора книг. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lab1_8cpp_a0959821d8cb770152bdfcc3cedb12789}{quick\+Sort}} (vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&a, long low, long high)
+\begin{DoxyCompactList}\small\item\em Быстрая сортировка (рекурсивная). \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \mbox{\hyperlink{lab1_8cpp_ad33602834dac30ffa97264a0c5eb29d4}{read\+CSV}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Чтение книг из CSV-\/файла. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lab1_8cpp_aedcd52cfbe1157cb17211a73a3e80ee5}{write\+Results}} (const string \&filename, int size, const string \&sort\+Type, long long time\+Ms)
+\begin{DoxyCompactList}\small\item\em Дозаписывает результат теста в файл. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{lab1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Точка входа. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Сравнение алгоритмов сортировки (пузырьковая, пирамидальная, быстрая, std\+::sort) на наборах данных о книгах, загружаемых из CSV-\/файлов. 
+
+Программа последовательно читает файлы library\+\_\+books$<$размер$>$.csv, выполняет для каждого набора сортировку четырьмя способами, замеряет время выполнения в миллисекундах и дописывает результаты в файл results.\+txt.
+
+Формат файла результатов\+: размер, тип сортировки, время (мс). 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{lab1_8cpp_ad3b9439b13a5931513310bfb4c5cb220}\label{lab1_8cpp_ad3b9439b13a5931513310bfb4c5cb220} 
+\index{lab1.cpp@{lab1.cpp}!bubbleSort@{bubbleSort}}
+\index{bubbleSort@{bubbleSort}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{bubbleSort()}{bubbleSort()}}
+{\footnotesize\ttfamily void bubble\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&}]{arr }\end{DoxyParamCaption})}
+
+
+
+Пузырьковая сортировка. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arr} & Вектор книг (изменяется на месте). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lab1_8cpp_a64d30c7266d9a4ef91ca04399572610c}\label{lab1_8cpp_a64d30c7266d9a4ef91ca04399572610c} 
+\index{lab1.cpp@{lab1.cpp}!downHeap@{downHeap}}
+\index{downHeap@{downHeap}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{downHeap()}{downHeap()}}
+{\footnotesize\ttfamily void down\+Heap (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&}]{a,  }\item[{long}]{k,  }\item[{long}]{n }\end{DoxyParamCaption})}
+
+
+
+Восстанавливает свойство кучи в нисходящем направлении (пирамидальная сортировка). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Вектор книг (начинается с индекса 1, a\mbox{[}0\mbox{]} — неиспользуемый, пустой элемент). \\
+\hline
+{\em k} & Индекс родительского узла. \\
+\hline
+{\em n} & Размер кучи (последний значимый индекс). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lab1_8cpp_a2fcbf179e39f4f68622abc37d86461e0}\label{lab1_8cpp_a2fcbf179e39f4f68622abc37d86461e0} 
+\index{lab1.cpp@{lab1.cpp}!heapSort@{heapSort}}
+\index{heapSort@{heapSort}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{heapSort()}{heapSort()}}
+{\footnotesize\ttfamily void heap\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Пирамидальная сортировка (heap sort) вектора книг. 
+
+Временно вставляет пустой элемент в начало массива для удобства индексации с 1. 
+\begin{DoxyParams}{Parameters}
+{\em a} & Вектор книг (изменяется на месте). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lab1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{lab1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{lab1.cpp@{lab1.cpp}!main@{main}}
+\index{main@{main}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Точка входа. 
+
+Перебирает предопределённые размеры наборов данных, загружает книги из CSV-\/файлов, выполняет последовательно пузырьковую, пирамидальную, быструю и std\+::sort, записывает время выполнения в results.\+txt.
+
+\begin{DoxyReturn}{Returns}
+0 при успешном завершении. 
+\end{DoxyReturn}
+\Hypertarget{lab1_8cpp_a0959821d8cb770152bdfcc3cedb12789}\label{lab1_8cpp_a0959821d8cb770152bdfcc3cedb12789} 
+\index{lab1.cpp@{lab1.cpp}!quickSort@{quickSort}}
+\index{quickSort@{quickSort}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{quickSort()}{quickSort()}}
+{\footnotesize\ttfamily void quick\+Sort (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ \&}]{a,  }\item[{long}]{low,  }\item[{long}]{high }\end{DoxyParamCaption})}
+
+
+
+Быстрая сортировка (рекурсивная). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Вектор книг. \\
+\hline
+{\em low} & Нижняя граница сортируемой части. \\
+\hline
+{\em high} & Верхняя граница сортируемой части. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{lab1_8cpp_ad33602834dac30ffa97264a0c5eb29d4}\label{lab1_8cpp_ad33602834dac30ffa97264a0c5eb29d4} 
+\index{lab1.cpp@{lab1.cpp}!readCSV@{readCSV}}
+\index{readCSV@{readCSV}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{readCSV()}{readCSV()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classBook}{Book}} $>$ read\+CSV (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Чтение книг из CSV-\/файла. 
+
+Формат CSV\+: заголовок (первая строка) пропускается, далее строки\+: Автор,Название,Год,Страницы. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Имя файла. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Вектор книг. Если файл не открыт, возвращается пустой вектор. 
+\end{DoxyReturn}
+\Hypertarget{lab1_8cpp_aedcd52cfbe1157cb17211a73a3e80ee5}\label{lab1_8cpp_aedcd52cfbe1157cb17211a73a3e80ee5} 
+\index{lab1.cpp@{lab1.cpp}!writeResults@{writeResults}}
+\index{writeResults@{writeResults}!lab1.cpp@{lab1.cpp}}
+\doxysubsubsection{\texorpdfstring{writeResults()}{writeResults()}}
+{\footnotesize\ttfamily void write\+Results (\begin{DoxyParamCaption}\item[{const string \&}]{filename,  }\item[{int}]{size,  }\item[{const string \&}]{sort\+Type,  }\item[{long long}]{time\+Ms }\end{DoxyParamCaption})}
+
+
+
+Дозаписывает результат теста в файл. 
+
+Строка формата\+: размер , тип\+\_\+сортировки , время\+\_\+мс. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Имя файла. \\
+\hline
+{\em size} & Размер набора данных. \\
+\hline
+{\em sort\+Type} & Название сортировки (например, "{}bubble"{}). \\
+\hline
+{\em time\+Ms} & Время выполнения в миллисекундах. \\
+\hline
+\end{DoxyParams}
