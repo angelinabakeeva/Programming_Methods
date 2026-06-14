@@ -1,0 +1,73 @@
+\doxysection{BSTree Class Reference}
+\hypertarget{classBSTree}{}\label{classBSTree}\index{BSTree@{BSTree}}
+
+
+Класс бинарного дерева поиска для книг.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classBSTree_a453f06c8a102516d7306d53c62b6b9bc}\label{classBSTree_a453f06c8a102516d7306d53c62b6b9bc} 
+{\bfseries BSTree} ()
+\begin{DoxyCompactList}\small\item\em Конструктор по умолчанию – создаёт пустое дерево. \end{DoxyCompactList}\item 
+\Hypertarget{classBSTree_af155f6d47aa40cbc9ba1c800e43e2e84}\label{classBSTree_af155f6d47aa40cbc9ba1c800e43e2e84} 
+{\bfseries BSTree} (const \mbox{\hyperlink{classBSTree}{BSTree}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Запрет копирования. \end{DoxyCompactList}\item 
+\Hypertarget{classBSTree_a4d86095de0ac6ef35287f1b0091092bf}\label{classBSTree_a4d86095de0ac6ef35287f1b0091092bf} 
+\mbox{\hyperlink{classBSTree}{BSTree}} \& {\bfseries operator=} (const \mbox{\hyperlink{classBSTree}{BSTree}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Запрет присваивания. \end{DoxyCompactList}\item 
+\Hypertarget{classBSTree_a61dd6f59635ca4b40ab97c6a0f939bca}\label{classBSTree_a61dd6f59635ca4b40ab97c6a0f939bca} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+BSTree} ()
+\begin{DoxyCompactList}\small\item\em Деструктор – рекурсивно удаляет все узлы. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBSTree_aa87e8d6a4f2624d1a787ae1a47ef905c}{insert}} (const string \&key, const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}obj)
+\begin{DoxyCompactList}\small\item\em Вставка нового элемента в BST. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBSTree_a742b0f1b3214360bc88c522f8da21488}{search}} (const string \&key, vector$<$ const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} $>$ \&out) const
+\begin{DoxyCompactList}\small\item\em Поиск всех книг по ключу. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс бинарного дерева поиска для книг. 
+
+Дубликаты ключей допускаются и могут располагаться в обоих поддеревьях. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBSTree_aa87e8d6a4f2624d1a787ae1a47ef905c}\label{classBSTree_aa87e8d6a4f2624d1a787ae1a47ef905c} 
+\index{BSTree@{BSTree}!insert@{insert}}
+\index{insert@{insert}!BSTree@{BSTree}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void BSTree\+::insert (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Вставка нового элемента в BST. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Ключ (автор). \\
+\hline
+{\em obj} & Указатель на книгу. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classBSTree_a742b0f1b3214360bc88c522f8da21488}\label{classBSTree_a742b0f1b3214360bc88c522f8da21488} 
+\index{BSTree@{BSTree}!search@{search}}
+\index{search@{search}!BSTree@{BSTree}}
+\doxysubsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily void BSTree\+::search (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{vector$<$ const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} $>$ \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Поиск всех книг по ключу. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em key} & Ключ (автор). \\
+\hline
+\mbox{\texttt{ out}}  & {\em out} & Вектор, заполняемый указателями на найденные книги. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algo.\+cpp\end{DoxyCompactItemize}

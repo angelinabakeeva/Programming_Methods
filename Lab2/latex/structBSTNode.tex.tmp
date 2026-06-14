@@ -1,0 +1,59 @@
+\doxysection{BSTNode Struct Reference}
+\hypertarget{structBSTNode}{}\label{structBSTNode}\index{BSTNode@{BSTNode}}
+
+
+Узел бинарного дерева поиска.  
+
+
+
+
+Collaboration diagram for BSTNode\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structBSTNode_a92fabde09c09578fc247ce28c0dec789}{BSTNode}} (const string \&k, const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}v)
+\begin{DoxyCompactList}\small\item\em Конструктор узла BST. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structBSTNode_ac16c8913b82e94f77c51dfbf77774bd3}\label{structBSTNode_ac16c8913b82e94f77c51dfbf77774bd3} 
+string {\bfseries key}
+\begin{DoxyCompactList}\small\item\em Ключ (автор) \end{DoxyCompactList}\item 
+\Hypertarget{structBSTNode_af49f645ae33d10e60889b43cbf7bd431}\label{structBSTNode_af49f645ae33d10e60889b43cbf7bd431} 
+const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} {\bfseries value}
+\begin{DoxyCompactList}\small\item\em Указатель на книгу \end{DoxyCompactList}\item 
+\Hypertarget{structBSTNode_ad3749f519572d82177ea184efe84beb2}\label{structBSTNode_ad3749f519572d82177ea184efe84beb2} 
+\mbox{\hyperlink{structBSTNode}{BSTNode}} \texorpdfstring{$\ast$}{*} {\bfseries left}
+\begin{DoxyCompactList}\small\item\em Левый потомок \end{DoxyCompactList}\item 
+\Hypertarget{structBSTNode_a864a3c35fef3f0ea7bc9b2fd04c985ed}\label{structBSTNode_a864a3c35fef3f0ea7bc9b2fd04c985ed} 
+\mbox{\hyperlink{structBSTNode}{BSTNode}} \texorpdfstring{$\ast$}{*} {\bfseries right}
+\begin{DoxyCompactList}\small\item\em Правый потомок \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Узел бинарного дерева поиска. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structBSTNode_a92fabde09c09578fc247ce28c0dec789}\label{structBSTNode_a92fabde09c09578fc247ce28c0dec789} 
+\index{BSTNode@{BSTNode}!BSTNode@{BSTNode}}
+\index{BSTNode@{BSTNode}!BSTNode@{BSTNode}}
+\doxysubsubsection{\texorpdfstring{BSTNode()}{BSTNode()}}
+{\footnotesize\ttfamily BSTNode\+::\+BSTNode (\begin{DoxyParamCaption}\item[{const string \&}]{k,  }\item[{const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор узла BST. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & Ключ. \\
+\hline
+{\em v} & Указатель на книгу. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algo.\+cpp\end{DoxyCompactItemize}

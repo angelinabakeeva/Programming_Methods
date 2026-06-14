@@ -16,13 +16,24 @@
 using namespace std;
 using namespace std::chrono;
 
+/**
+ * @brief Структура, представляющая книгу.
+ */
 struct Book {
-    string author;
-    string title;
-    int year;
-    int pages;
+    string author; ///< Автор книги
+    string title;  ///< Название книги
+    int year;      ///< Год издания
+    int pages;     ///< Количество страниц
 };
 
+/**
+ * @brief Чтение данных из CSV-файла.
+ * @details Файл должен иметь заголовок в первой строке.
+ *          Последующие строки: author,title,year,pages.
+ * @param path Путь к CSV-файлу.
+ * @return Вектор прочитанных книг.
+ * @note При ошибке открытия программа завершается с кодом 1.
+ */
 vector<Book> readCSV(const string& path) {
     FILE* f = fopen(path.c_str(), "r");
     if (!f) {
@@ -48,6 +59,12 @@ vector<Book> readCSV(const string& path) {
 }
 
 //ЛИНЕЙНЫЙ ПОИСК
+/**
+ * @brief Линейный поиск книг по автору.
+ * @param data Вектор всех книг.
+ * @param key Искомый автор.
+ * @return Количество книг с заданным автором.
+ */
 int linearSearch(const vector<Book>& data, const string& key) {
     int count = 0;
     for (const auto& b : data) {
@@ -56,20 +73,37 @@ int linearSearch(const vector<Book>& data, const string& key) {
     return count;
 }
 
-//БИНАРНОЕ ДЕРЕВО ПОИСКА
+//БИНАРНОЕ ДЕРЕВО ПОИСКА (BST)
+/**
+ * @brief Узел бинарного дерева поиска.
+ */
 struct BSTNode {
-    string key;
-    const Book* value;
-    BSTNode *left, *right;
+    string key;          ///< Ключ (автор)
+    const Book* value;   ///< Указатель на книгу
+    BSTNode *left;       ///< Левый потомок
+    BSTNode *right;      ///< Правый потомок
     
+    /**
+     * @brief Конструктор узла BST.
+     * @param k Ключ.
+     * @param v Указатель на книгу.
+     */
     BSTNode(const string& k, const Book* v)
         : key(k), value(v), left(nullptr), right(nullptr) {}
 };
 
+/**
+ * @brief Класс бинарного дерева поиска для книг.
+ * @details Дубликаты ключей допускаются и могут располагаться в обоих поддеревьях.
+ */
 class BSTree {
 private:
-    BSTNode* root;
+    BSTNode* root; ///< Корень дерева
     
+    /**
+     * @brief Рекурсивная очистка дерева.
+     * @param node Корень поддерева для удаления.
+     */
     void clearRecursive(BSTNode* node) {
         if (node) {
             clearRecursive(node->left);
@@ -78,6 +112,12 @@ private:
         }
     }
     
+    /**
+     * @brief Рекурсивный поиск всех книг с заданным ключом.
+     * @param node Текущий узел.
+     * @param key Искомый ключ.
+     * @param[out] out Вектор, в который добавляются найденные указатели на книги.
+     */
     void searchRecursive(BSTNode* node, const string& key,
                          vector<const Book*>& out) const {
         if (!node) return;
@@ -94,11 +134,22 @@ private:
     }
     
 public:
+    /// Конструктор по умолчанию – создаёт пустое дерево.
     BSTree() : root(nullptr) {}
+    
+    /// Запрет копирования.
     BSTree(const BSTree&) = delete;
+    /// Запрет присваивания.
     BSTree& operator=(const BSTree&) = delete;
+    
+    /// Деструктор – рекурсивно удаляет все узлы.
     ~BSTree() { clearRecursive(root); }
     
+    /**
+     * @brief Вставка нового элемента в BST.
+     * @param key Ключ (автор).
+     * @param obj Указатель на книгу.
+     */
     void insert(const string& key, const Book* obj) {
         BSTNode** pp = &root;
         while (*pp) {
@@ -110,6 +161,11 @@ public:
         *pp = new BSTNode(key, obj);
     }
     
+    /**
+     * @brief Поиск всех книг по ключу.
+     * @param key Ключ (автор).
+     * @param[out] out Вектор, заполняемый указателями на найденные книги.
+     */
     void search(const string& key, vector<const Book*>& out) const {
         out.clear();
         searchRecursive(root, key, out);
@@ -117,23 +173,44 @@ public:
 };
 
 //КРАСНО-ЧЁРНОЕ ДЕРЕВО
+/// Цвет узла красно-чёрного дерева.
 enum class Color { RED, BLACK };
 
+/**
+ * @brief Узел красно-чёрного дерева.
+ */
 struct RBNode {
-    string key;
-    const Book* value;
-    Color color;
-    RBNode *left, *right, *parent;
+    string key;          ///< Ключ (автор)
+    const Book* value;   ///< Указатель на книгу
+    Color color;         ///< Цвет узла
+    RBNode *left;        ///< Левый потомок
+    RBNode *right;       ///< Правый потомок
+    RBNode *parent;      ///< Родительский узел
     
+    /**
+     * @brief Конструктор узла RBT.
+     * @param k Ключ.
+     * @param v Указатель на книгу.
+     */
     RBNode(const string& k, const Book* v)
         : key(k), value(v), color(Color::RED),
           left(nullptr), right(nullptr), parent(nullptr) {}
 };
 
+/**
+ * @brief Класс красно-чёрного дерева для книг.
+ * @details Поддерживает стандартные свойства: корень чёрный,
+ *          красный узел имеет чёрных потомков, одинаковая чёрная высота.
+ *          Дубликаты ключей разрешены.
+ */
 class RBTree {
 private:
-    RBNode* root;
+    RBNode* root; ///< Корень дерева
     
+    /**
+     * @brief Рекурсивная очистка дерева.
+     * @param node Корень поддерева.
+     */
     void clearRecursive(RBNode* node) {
         if (node) {
             clearRecursive(node->left);
@@ -142,6 +219,10 @@ private:
         }
     }
     
+    /**
+     * @brief Левый поворот вокруг узла x.
+     * @param x Узел, вокруг которого выполняется поворот.
+     */
     void rotateLeft(RBNode* x) {
         RBNode* y = x->right;
         x->right = y->left;
@@ -154,6 +235,10 @@ private:
         x->parent = y;
     }
     
+    /**
+     * @brief Правый поворот вокруг узла x.
+     * @param x Узел, вокруг которого выполняется поворот.
+     */
     void rotateRight(RBNode* x) {
         RBNode* y = x->left;
         x->left = y->right;
@@ -166,6 +251,10 @@ private:
         x->parent = y;
     }
     
+    /**
+     * @brief Восстановление свойств красно-чёрного дерева после вставки.
+     * @param z Вставленный узел (красный).
+     */
     void fixInsert(RBNode* z) {
         while (z->parent && z->parent->color == Color::RED) {
             if (z->parent == z->parent->parent->left) {
@@ -205,6 +294,12 @@ private:
         root->color = Color::BLACK;
     }
     
+    /**
+     * @brief Рекурсивный поиск всех книг с заданным ключом.
+     * @param node Текущий узел.
+     * @param key Искомый ключ.
+     * @param[out] out Вектор для сбора результатов.
+     */
     void searchRecursive(RBNode* node, const string& key,
                          vector<const Book*>& out) const {
         if (!node) return;
@@ -221,11 +316,22 @@ private:
     }
     
 public:
+    /// Создаёт пустое красно-чёрное дерево.
     RBTree() : root(nullptr) {}
+    
+    /// Запрет копирования.
     RBTree(const RBTree&) = delete;
+    /// Запрет присваивания.
     RBTree& operator=(const RBTree&) = delete;
+    
+    /// Деструктор.
     ~RBTree() { clearRecursive(root); }
     
+    /**
+     * @brief Вставка элемента в красно-чёрное дерево.
+     * @param key Ключ (автор).
+     * @param obj Указатель на книгу.
+     */
     void insert(const string& key, const Book* obj) {
         RBNode* z = new RBNode(key, obj);
         RBNode* y = nullptr;
@@ -245,27 +351,49 @@ public:
         fixInsert(z);
     }
     
+    /**
+     * @brief Поиск всех книг по ключу.
+     * @param key Ключ.
+     * @param[out] out Вектор с найденными указателями на книги.
+     */
     void search(const string& key, vector<const Book*>& out) const {
         out.clear();
         searchRecursive(root, key, out);
     }
 };
 
-// ==================== 4. ХЕШ-ТАБЛИЦА ====================
+//ХЕШ-ТАБЛИЦА (djb2 + цепочки)
+/**
+ * @brief Узел цепочки хеш-таблицы.
+ */
 struct HashNode {
-    string key;
-    const Book* value;
-    HashNode* next;
+    string key;        ///< Ключ (автор)
+    const Book* value; ///< Указатель на книгу
+    HashNode* next;    ///< Следующий узел в цепочке
     
+    /**
+     * @brief Конструктор узла.
+     * @param k Ключ.
+     * @param v Указатель на книгу.
+     */
     HashNode(const string& k, const Book* v)
         : key(k), value(v), next(nullptr) {}
 };
 
+/**
+ * @brief Хеш-таблица с цепочками для разрешения коллизий.
+ * @details Используется хеш-функция djb2.
+ */
 class HashMap {
 private:
-    vector<HashNode*> buckets;
-    size_t num_elements;
+    vector<HashNode*> buckets; ///< Массив корзин (указателей на цепочки)
+    size_t num_elements;       ///< Количество хранимых элементов
     
+    /**
+     * @brief Хеш-функция djb2.
+     * @param s Строка для хеширования.
+     * @return Хеш-значение.
+     */
     size_t hash(const string& s) const {
         size_t h = 5381;
         for (char c : s) h = ((h << 5) + h) + c;
@@ -273,12 +401,21 @@ private:
     }
     
 public:
+    /**
+     * @brief Конструктор хеш-таблицы.
+     * @param bucketCount Количество корзин (размер вектора корзин).
+     */
     HashMap(size_t bucketCount)
         : buckets(bucketCount, nullptr), num_elements(0) {}
     
+    /// Запрет копирования.
     HashMap(const HashMap&) = delete;
+    /// Запрет присваивания.
     HashMap& operator=(const HashMap&) = delete;
     
+    /**
+     * @brief Деструктор. Освобождает все цепочки.
+     */
     ~HashMap() {
         for (auto head : buckets) {
             HashNode* cur = head;
@@ -290,6 +427,11 @@ public:
         }
     }
     
+    /**
+     * @brief Вставка элемента в хеш-таблицу.
+     * @param key Ключ (автор).
+     * @param obj Указатель на книгу.
+     */
     void insert(const string& key, const Book* obj) {
         size_t idx = hash(key) % buckets.size();
         HashNode* node = new HashNode(key, obj);
@@ -298,6 +440,11 @@ public:
         ++num_elements;
     }
     
+    /**
+     * @brief Поиск всех книг с заданным ключом.
+     * @param key Ключ.
+     * @param[out] out Вектор указателей на найденные книги.
+     */
     void search(const string& key, vector<const Book*>& out) const {
         out.clear();
         size_t idx = hash(key) % buckets.size();
@@ -306,6 +453,11 @@ public:
         }
     }
     
+    /**
+     * @brief Подсчёт количества "лишних" элементов в цепочках (коллизий).
+     * @details Учитывает все корзины с длиной > 1.
+     * @return Сумма (длина - 1) для каждой такой корзины.
+     */
     size_t countRealCollisions() const {
         size_t collisions = 0;
         for (const auto& bucket : buckets) {
@@ -316,12 +468,23 @@ public:
         return collisions;
     }
     
+    /**
+     * @brief Текущий размер таблицы (количество элементов).
+     * @return Число элементов.
+     */
     size_t size() const { return num_elements; }
 };
 
-// ==================== ЗАМЕРЫ ВРЕМЕНИ ====================
+//ЗАМЕРЫ ВРЕМЕНИ
+/// Тип для представления времени в миллисекундах с плавающей точкой.
 using ms = chrono::duration<double, milli>;
 
+/**
+ * @brief Измерение времени линейного поиска.
+ * @param data Вектор книг.
+ * @param key Искомый автор.
+ * @return Время в миллисекундах.
+ */
 double measureLinear(const vector<Book>& data, const string& key) {
     volatile int sink = 0;
     auto t0 = high_resolution_clock::now();
@@ -329,6 +492,12 @@ double measureLinear(const vector<Book>& data, const string& key) {
     return ms(high_resolution_clock::now() - t0).count();
 }
 
+/**
+ * @brief Измерение времени поиска в BST.
+ * @param tree Дерево.
+ * @param key Ключ.
+ * @return Время в миллисекундах.
+ */
 double measureBST(const BSTree& tree, const string& key) {
     volatile int sink = 0;
     vector<const Book*> out;
@@ -338,6 +507,12 @@ double measureBST(const BSTree& tree, const string& key) {
     return ms(high_resolution_clock::now() - t0).count();
 }
 
+/**
+ * @brief Измерение времени поиска в красно-чёрном дереве.
+ * @param tree Дерево.
+ * @param key Ключ.
+ * @return Время в миллисекундах.
+ */
 double measureRBT(const RBTree& tree, const string& key) {
     volatile int sink = 0;
     vector<const Book*> out;
@@ -347,6 +522,12 @@ double measureRBT(const RBTree& tree, const string& key) {
     return ms(high_resolution_clock::now() - t0).count();
 }
 
+/**
+ * @brief Измерение времени поиска в хеш-таблице.
+ * @param hm Хеш-таблица.
+ * @param key Ключ.
+ * @return Время в миллисекундах.
+ */
 double measureHash(const HashMap& hm, const string& key) {
     volatile int sink = 0;
     vector<const Book*> out;
@@ -356,6 +537,12 @@ double measureHash(const HashMap& hm, const string& key) {
     return ms(high_resolution_clock::now() - t0).count();
 }
 
+/**
+ * @brief Измерение времени поиска в std::multimap.
+ * @param mm Мультиотображение.
+ * @param key Ключ.
+ * @return Время в миллисекундах.
+ */
 double measureMultimap(const multimap<string, const Book*>& mm,
                        const string& key) {
     volatile int sink = 0;
@@ -366,7 +553,14 @@ double measureMultimap(const multimap<string, const Book*>& mm,
     return ms(high_resolution_clock::now() - t0).count();
 }
 
-// ==================== MAIN ====================
+//MAIN
+/**
+ * @brief Точка входа в программу.
+ * @details Для каждого размера из массива SIZES читает соответствующий CSV-файл,
+ *          строит все структуры данных, выполняет поиск случайного автора
+ *          и замеряет время. Результаты записываются в search_results.csv.
+ * @return 0 при успешном завершении, 1 при ошибке создания файла результатов.
+ */
 int main() {
     const int SIZES[] = {
         100, 500, 1000, 5000, 10000,

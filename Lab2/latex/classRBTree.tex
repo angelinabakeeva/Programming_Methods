@@ -1,0 +1,73 @@
+\doxysection{RBTree Class Reference}
+\hypertarget{classRBTree}{}\label{classRBTree}\index{RBTree@{RBTree}}
+
+
+Класс красно-\/чёрного дерева для книг.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRBTree_a19921f34f32f777bb3c4b85d4ff1d9de}\label{classRBTree_a19921f34f32f777bb3c4b85d4ff1d9de} 
+{\bfseries RBTree} ()
+\begin{DoxyCompactList}\small\item\em Создаёт пустое красно-\/чёрное дерево. \end{DoxyCompactList}\item 
+\Hypertarget{classRBTree_a18a948c1a57e2804e6374b796947eb83}\label{classRBTree_a18a948c1a57e2804e6374b796947eb83} 
+{\bfseries RBTree} (const \mbox{\hyperlink{classRBTree}{RBTree}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Запрет копирования. \end{DoxyCompactList}\item 
+\Hypertarget{classRBTree_a59094033157539ebe5a230afccb4110b}\label{classRBTree_a59094033157539ebe5a230afccb4110b} 
+\mbox{\hyperlink{classRBTree}{RBTree}} \& {\bfseries operator=} (const \mbox{\hyperlink{classRBTree}{RBTree}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Запрет присваивания. \end{DoxyCompactList}\item 
+\Hypertarget{classRBTree_abab51e54e07c1adf0ca0c9a5d466427b}\label{classRBTree_abab51e54e07c1adf0ca0c9a5d466427b} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+RBTree} ()
+\begin{DoxyCompactList}\small\item\em Деструктор. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRBTree_a2efff4dc6f833d11df5ac8fd741b8c97}{insert}} (const string \&key, const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}obj)
+\begin{DoxyCompactList}\small\item\em Вставка элемента в красно-\/чёрное дерево. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRBTree_a356bd875aa0a3a9408bdb3d61a278a0c}{search}} (const string \&key, vector$<$ const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} $>$ \&out) const
+\begin{DoxyCompactList}\small\item\em Поиск всех книг по ключу. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс красно-\/чёрного дерева для книг. 
+
+Поддерживает стандартные свойства\+: корень чёрный, красный узел имеет чёрных потомков, одинаковая чёрная высота. Дубликаты ключей разрешены. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRBTree_a2efff4dc6f833d11df5ac8fd741b8c97}\label{classRBTree_a2efff4dc6f833d11df5ac8fd741b8c97} 
+\index{RBTree@{RBTree}!insert@{insert}}
+\index{insert@{insert}!RBTree@{RBTree}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void RBTree\+::insert (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Вставка элемента в красно-\/чёрное дерево. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Ключ (автор). \\
+\hline
+{\em obj} & Указатель на книгу. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classRBTree_a356bd875aa0a3a9408bdb3d61a278a0c}\label{classRBTree_a356bd875aa0a3a9408bdb3d61a278a0c} 
+\index{RBTree@{RBTree}!search@{search}}
+\index{search@{search}!RBTree@{RBTree}}
+\doxysubsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily void RBTree\+::search (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{vector$<$ const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} $>$ \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Поиск всех книг по ключу. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em key} & Ключ. \\
+\hline
+\mbox{\texttt{ out}}  & {\em out} & Вектор с найденными указателями на книги. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algo.\+cpp\end{DoxyCompactItemize}

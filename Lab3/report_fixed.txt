@@ -1,0 +1,84 @@
+
+========== Method 1: MidSquare (8-digit, XOR fix) ==========
+Sample  1 | mean=0.545870 | stddev=0.245843 | cv=0.450368 | chi2=850.912000 | uniform=NO
+Sample  2 | mean=0.546391 | stddev=0.246035 | cv=0.450291 | chi2=902.968000 | uniform=NO
+Sample  3 | mean=0.552315 | stddev=0.246352 | cv=0.446035 | chi2=912.824000 | uniform=NO
+Sample  4 | mean=0.555563 | stddev=0.244310 | cv=0.439752 | chi2=936.960000 | uniform=NO
+Sample  5 | mean=0.549105 | stddev=0.248279 | cv=0.452153 | chi2=797.640000 | uniform=NO
+Sample  6 | mean=0.550455 | stddev=0.247657 | cv=0.449912 | chi2=839.336000 | uniform=NO
+Sample  7 | mean=0.548618 | stddev=0.247108 | cv=0.450418 | chi2=875.384000 | uniform=NO
+Sample  8 | mean=0.548572 | stddev=0.247300 | cv=0.450806 | chi2=842.248000 | uniform=NO
+Sample  9 | mean=0.557314 | stddev=0.244536 | cv=0.438776 | chi2=947.008000 | uniform=NO
+Sample 10 | mean=0.550487 | stddev=0.245718 | cv=0.446364 | chi2=922.104000 | uniform=NO
+Sample 11 | mean=0.554928 | stddev=0.247447 | cv=0.445909 | chi2=932.528000 | uniform=NO
+Sample 12 | mean=0.550791 | stddev=0.245860 | cv=0.446376 | chi2=887.392000 | uniform=NO
+Sample 13 | mean=0.554360 | stddev=0.247041 | cv=0.445633 | chi2=841.168000 | uniform=NO
+Sample 14 | mean=0.552778 | stddev=0.244200 | cv=0.441769 | chi2=925.752000 | uniform=NO
+Sample 15 | mean=0.547730 | stddev=0.246888 | cv=0.450748 | chi2=840.304000 | uniform=NO
+Sample 16 | mean=0.546050 | stddev=0.244361 | cv=0.447508 | chi2=912.576000 | uniform=NO
+Sample 17 | mean=0.547406 | stddev=0.247749 | cv=0.452588 | chi2=859.632000 | uniform=NO
+Sample 18 | mean=0.551748 | stddev=0.244199 | cv=0.442591 | chi2=912.568000 | uniform=NO
+Sample 19 | mean=0.555622 | stddev=0.247974 | cv=0.446299 | chi2=924.560000 | uniform=NO
+Sample 20 | mean=0.553818 | stddev=0.247657 | cv=0.447181 | chi2=823.664000 | uniform=NO
+
+--- AVERAGE ---
+Mean   = 0.550996
+Stddev = 0.246326
+CV     = 0.447074
+Passed chi-square: 0 / 20
+
+========== Method 2: LCG + XOR shift ==========
+Sample  1 | mean=0.498356 | stddev=0.286505 | cv=0.574901 | chi2=14.672000 | uniform=YES
+Sample  2 | mean=0.502498 | stddev=0.288690 | cv=0.574510 | chi2=16.624000 | uniform=YES
+Sample  3 | mean=0.506525 | stddev=0.287792 | cv=0.568170 | chi2=19.904000 | uniform=YES
+Sample  4 | mean=0.498248 | stddev=0.289396 | cv=0.580828 | chi2=13.328000 | uniform=YES
+Sample  5 | mean=0.502972 | stddev=0.286207 | cv=0.569031 | chi2=12.624000 | uniform=YES
+Sample  6 | mean=0.495495 | stddev=0.286956 | cv=0.579129 | chi2=21.904000 | uniform=YES
+Sample  7 | mean=0.504618 | stddev=0.285664 | cv=0.566100 | chi2=16.760000 | uniform=YES
+Sample  8 | mean=0.505942 | stddev=0.288105 | cv=0.569442 | chi2=15.224000 | uniform=YES
+Sample  9 | mean=0.500066 | stddev=0.288105 | cv=0.576135 | chi2=16.320000 | uniform=YES
+Sample 10 | mean=0.500989 | stddev=0.287067 | cv=0.573000 | chi2=23.064000 | uniform=YES
+Sample 11 | mean=0.503113 | stddev=0.287471 | cv=0.571386 | chi2=22.848000 | uniform=YES
+Sample 12 | mean=0.502805 | stddev=0.288336 | cv=0.573456 | chi2=13.032000 | uniform=YES
+Sample 13 | mean=0.495209 | stddev=0.289622 | cv=0.584847 | chi2=17.144000 | uniform=YES
+Sample 14 | mean=0.490013 | stddev=0.287322 | cv=0.586356 | chi2=13.488000 | uniform=YES
+Sample 15 | mean=0.499417 | stddev=0.287099 | cv=0.574869 | chi2=30.440000 | uniform=NO
+Sample 16 | mean=0.494021 | stddev=0.289966 | cv=0.586951 | chi2=22.952000 | uniform=YES
+Sample 17 | mean=0.496025 | stddev=0.289014 | cv=0.582660 | chi2=12.688000 | uniform=YES
+Sample 18 | mean=0.503628 | stddev=0.288545 | cv=0.572932 | chi2=13.920000 | uniform=YES
+Sample 19 | mean=0.499232 | stddev=0.288731 | cv=0.578351 | chi2=11.024000 | uniform=YES
+Sample 20 | mean=0.503036 | stddev=0.286292 | cv=0.569128 | chi2=28.032000 | uniform=YES
+
+--- AVERAGE ---
+Mean   = 0.500110
+Stddev = 0.287844
+CV     = 0.575609
+Passed chi-square: 19 / 20
+
+========== Method 3: Xorshift + multiply (fixed) ==========
+Sample  1 | mean=0.495870 | stddev=0.288855 | cv=0.582521 | chi2=20.808000 | uniform=YES
+Sample  2 | mean=0.498475 | stddev=0.291511 | cv=0.584806 | chi2=24.184000 | uniform=YES
+Sample  3 | mean=0.496457 | stddev=0.289708 | cv=0.583551 | chi2=19.168000 | uniform=YES
+Sample  4 | mean=0.501954 | stddev=0.288402 | cv=0.574560 | chi2=21.928000 | uniform=YES
+Sample  5 | mean=0.507346 | stddev=0.286236 | cv=0.564182 | chi2=41.144000 | uniform=NO
+Sample  6 | mean=0.489504 | stddev=0.289997 | cv=0.592431 | chi2=26.040000 | uniform=YES
+Sample  7 | mean=0.506016 | stddev=0.286458 | cv=0.566105 | chi2=26.496000 | uniform=YES
+Sample  8 | mean=0.501934 | stddev=0.288262 | cv=0.574303 | chi2=8.664000 | uniform=YES
+Sample  9 | mean=0.497034 | stddev=0.289355 | cv=0.582162 | chi2=17.200000 | uniform=YES
+Sample 10 | mean=0.500764 | stddev=0.286491 | cv=0.572108 | chi2=18.432000 | uniform=YES
+Sample 11 | mean=0.505768 | stddev=0.287762 | cv=0.568961 | chi2=20.160000 | uniform=YES
+Sample 12 | mean=0.498840 | stddev=0.282638 | cv=0.566591 | chi2=33.960000 | uniform=NO
+Sample 13 | mean=0.501723 | stddev=0.289578 | cv=0.577167 | chi2=9.888000 | uniform=YES
+Sample 14 | mean=0.502805 | stddev=0.292626 | cv=0.581987 | chi2=17.976000 | uniform=YES
+Sample 15 | mean=0.493834 | stddev=0.290738 | cv=0.588736 | chi2=10.096000 | uniform=YES
+Sample 16 | mean=0.504179 | stddev=0.287413 | cv=0.570062 | chi2=9.536000 | uniform=YES
+Sample 17 | mean=0.506043 | stddev=0.288601 | cv=0.570310 | chi2=18.192000 | uniform=YES
+Sample 18 | mean=0.497249 | stddev=0.289071 | cv=0.581340 | chi2=13.632000 | uniform=YES
+Sample 19 | mean=0.502288 | stddev=0.287075 | cv=0.571535 | chi2=20.648000 | uniform=YES
+Sample 20 | mean=0.500662 | stddev=0.288278 | cv=0.575793 | chi2=24.528000 | uniform=YES
+
+--- AVERAGE ---
+Mean   = 0.500437
+Stddev = 0.288453
+CV     = 0.576461
+Passed chi-square: 18 / 20

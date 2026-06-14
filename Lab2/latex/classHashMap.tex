@@ -1,0 +1,120 @@
+\doxysection{Hash\+Map Class Reference}
+\hypertarget{classHashMap}{}\label{classHashMap}\index{HashMap@{HashMap}}
+
+
+Хеш-\/таблица с цепочками для разрешения коллизий.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHashMap_a9aa0e29a7ff8821a25c7d4d79767eb37}{Hash\+Map}} (size\+\_\+t bucket\+Count)
+\begin{DoxyCompactList}\small\item\em Конструктор хеш-\/таблицы. \end{DoxyCompactList}\item 
+\Hypertarget{classHashMap_a79a7a6ec248bed382b03474940e6c155}\label{classHashMap_a79a7a6ec248bed382b03474940e6c155} 
+{\bfseries Hash\+Map} (const \mbox{\hyperlink{classHashMap}{Hash\+Map}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Запрет копирования. \end{DoxyCompactList}\item 
+\Hypertarget{classHashMap_a0043d78836fb95a1c6fe232a85a200f7}\label{classHashMap_a0043d78836fb95a1c6fe232a85a200f7} 
+\mbox{\hyperlink{classHashMap}{Hash\+Map}} \& {\bfseries operator=} (const \mbox{\hyperlink{classHashMap}{Hash\+Map}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Запрет присваивания. \end{DoxyCompactList}\item 
+\Hypertarget{classHashMap_a7120321a936e8018fd276bcd4b4da3b8}\label{classHashMap_a7120321a936e8018fd276bcd4b4da3b8} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Hash\+Map} ()
+\begin{DoxyCompactList}\small\item\em Деструктор. Освобождает все цепочки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHashMap_a4a9bdda0fdcfaf35dab83a97cf126210}{insert}} (const string \&key, const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}obj)
+\begin{DoxyCompactList}\small\item\em Вставка элемента в хеш-\/таблицу. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHashMap_abb5a384418432695184953fe0be3e352}{search}} (const string \&key, vector$<$ const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} $>$ \&out) const
+\begin{DoxyCompactList}\small\item\em Поиск всех книг с заданным ключом. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classHashMap_a735de1d9f0333d10d936656cc3e365b2}{count\+Real\+Collisions}} () const
+\begin{DoxyCompactList}\small\item\em Подсчёт количества "{}лишних"{} элементов в цепочках (коллизий). \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classHashMap_a24a88be9e7833e71cdbbc974c76c74cf}{size}} () const
+\begin{DoxyCompactList}\small\item\em Текущий размер таблицы (количество элементов). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Хеш-\/таблица с цепочками для разрешения коллизий. 
+
+Используется хеш-\/функция djb2. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classHashMap_a9aa0e29a7ff8821a25c7d4d79767eb37}\label{classHashMap_a9aa0e29a7ff8821a25c7d4d79767eb37} 
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\index{HashMap@{HashMap}!HashMap@{HashMap}}
+\doxysubsubsection{\texorpdfstring{HashMap()}{HashMap()}}
+{\footnotesize\ttfamily Hash\+Map\+::\+Hash\+Map (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{bucket\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор хеш-\/таблицы. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bucket\+Count} & Количество корзин (размер вектора корзин). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classHashMap_a735de1d9f0333d10d936656cc3e365b2}\label{classHashMap_a735de1d9f0333d10d936656cc3e365b2} 
+\index{HashMap@{HashMap}!countRealCollisions@{countRealCollisions}}
+\index{countRealCollisions@{countRealCollisions}!HashMap@{HashMap}}
+\doxysubsubsection{\texorpdfstring{countRealCollisions()}{countRealCollisions()}}
+{\footnotesize\ttfamily size\+\_\+t Hash\+Map\+::count\+Real\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Подсчёт количества "{}лишних"{} элементов в цепочках (коллизий). 
+
+Учитывает все корзины с длиной \texorpdfstring{$>$}{>} 1. \begin{DoxyReturn}{Returns}
+Сумма (длина -\/ 1) для каждой такой корзины. 
+\end{DoxyReturn}
+\Hypertarget{classHashMap_a4a9bdda0fdcfaf35dab83a97cf126210}\label{classHashMap_a4a9bdda0fdcfaf35dab83a97cf126210} 
+\index{HashMap@{HashMap}!insert@{insert}}
+\index{insert@{insert}!HashMap@{HashMap}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void Hash\+Map\+::insert (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Вставка элемента в хеш-\/таблицу. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Ключ (автор). \\
+\hline
+{\em obj} & Указатель на книгу. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHashMap_abb5a384418432695184953fe0be3e352}\label{classHashMap_abb5a384418432695184953fe0be3e352} 
+\index{HashMap@{HashMap}!search@{search}}
+\index{search@{search}!HashMap@{HashMap}}
+\doxysubsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily void Hash\+Map\+::search (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{vector$<$ const \mbox{\hyperlink{structBook}{Book}} \texorpdfstring{$\ast$}{*} $>$ \&}]{out }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Поиск всех книг с заданным ключом. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em key} & Ключ. \\
+\hline
+\mbox{\texttt{ out}}  & {\em out} & Вектор указателей на найденные книги. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classHashMap_a24a88be9e7833e71cdbbc974c76c74cf}\label{classHashMap_a24a88be9e7833e71cdbbc974c76c74cf} 
+\index{HashMap@{HashMap}!size@{size}}
+\index{size@{size}!HashMap@{HashMap}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily size\+\_\+t Hash\+Map\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Текущий размер таблицы (количество элементов). 
+
+\begin{DoxyReturn}{Returns}
+Число элементов. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Algo.\+cpp\end{DoxyCompactItemize}
